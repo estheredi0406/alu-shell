@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#Displays a list of currently running processes for all users, including those without a TTY,
+# awk to format the output, and sort to order the processes by user and PID.
+ps aux --sort=-%mem | awk '
+BEGIN { FS = " " }
+NR == 1 { print $0; next } # Print header
+{
+    if ($1!= "USER") {
+        printf("%-10s %-20s %-15s %-10s %-10s %-10s %-10s\n", $1, $11, $13, $14, $15, $16, $17);
+    }
+}
+' | column -t 
