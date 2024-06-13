@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#this is 11 manage
 PID_FILE="/var/run/my_process.pid"
 LOG_FILE="/tmp/my_process"
 
