@@ -2,7 +2,7 @@
 # Displays a simplified list of currently running processes for all users, focusing on essential details.
 
 # Use ps -ef to list all processes, and awk to format the output.
-ps -ef --sort=-pid | awk '
+ps -eo pid,user,start_time,args --sort=-start_time | awk '
 BEGIN { FS = " "}
 NR == 1 { print $0; next } # Skip the header
 {
