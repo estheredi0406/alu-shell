@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+PID_FILE="/var/run/my_process.pid"
+LOG_FILE="/tmp/my_process"
+
+case $1 in
+    start)
+        echo "Starting manage_my_process..."
+       ./manage_my_process.sh &
+        echo $ > "$PID_FILE"
+        ;;
+    stop)
+        echo "Stopping manage_my_process..."
+        kill $(cat "$PID_FILE")
+        rm "$PID_FILE"
+        ;;
+    restart)
+        echo "Restarting manage_my_process..."
+        kill $(cat "$PID_FILE")
+        rm "$PID_FILE"
+       ./manage_my_process.sh &
+        echo $ > "$PID_FILE"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;

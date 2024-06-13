@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Define the log file path
+LOG_FILE="/tmp/my_process"
+
+# Function to write the message to the log file and sleep for 2 seconds
+write_and_sleep() {
+    echo "I am alive!" >> "$LOG_FILE"
+    sleep 2
+}
+
+# Infinite loop to keep writing the message
+while true; do
+    write_and_sleep
+done
+
