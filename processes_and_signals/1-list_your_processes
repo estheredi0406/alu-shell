@@ -1,11 +1,3 @@
 #!/usr/bin/env bash
-# Displays a simplified list of currently running processes for all users, focusing on essential details.
-
-# Use ps -eo to list all processes, and awk to format the output.
-ps -eo pid,cmd --sort=-start_time | awk '
-BEGIN { FS = " "}
-NR == 1 { print $0; next } # Skip the header
-{
-    # Format the output to show PID, STARTED, and COMMAND.
-    printf("%-10s %-10s %-50s\n", $1, "STARTED", substr($2, index($2, " ")));
-}'
+# Displays a simplified list of currently running processes for all users, focus'
+ps -auxf
